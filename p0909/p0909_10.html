@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,th,td{border:1px solid black;border-collapse:collapse;}
+        th,td{width:100px; height:40px;}
+        tbody{background-color:rgb(247, 247, 212)}
+
+    </style>
+</head>
+<body>
+    <table>
+        <colgroup>
+            <col width="100px">
+            <col width="200px">
+            <col width="100px">
+            <col width="200px">
+         <thead>
+        <tr>
+            <th>방 이름</th>
+            <th>대상</th>
+            <th>크기</th>
+            <th>가격</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+            <th>유채방</th>
+            <td>여성 도미토리</td>
+            <td rowspan="3">4인실</td>
+            <td rowspan="4">1인 20,000원</td>
+        </tr>
+        <tr>
+            <th rowspan="2">동백방</th>
+            <td>동성 도미토리</td>
+
+
+        </tr>
+        <tr>
+
+            <td>가족1팀</td>
+
+
+        </tr>
+        <tr>
+            <th>천혜향방</th>
+            <td>-</td>
+            <td>2인실</td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <th colspan="4">바깥채 전체를 렌드합니다.</th>
+        </tr>
+        </tfoot>
+
+    </table>
+
+    <hr>
+    <table>
+        <colgroup>
+            <col width="100px">
+            <col width="200px">
+            <col width="100px">
+            <col width="200px">
+        </colgroup>
+        <tr>
+            <th>이름</th>
+            <td></td>
+            <th>연락처</th>
+            <td></td>
+        </tr>
+        <tr>
+            <th>주소</th>
+            <td colspan="3"></td>
+        </tr>
+        <tr>
+            <th>자기소개</th>
+            <td colspan="3"></td>
+        </tr>
+
+
+
+    </table>
+    
+</body>
+</html>
