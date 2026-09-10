@@ -73,7 +73,13 @@
         <br>
 
         <input type="submit" value="[SEND]">
-        <button type="button">[SEND]</button>
+        <button type="button"onclick=checkBtn()>[SEND]</button>
+        <script>
+            function checkBtn(){
+                alert("CLICK BUTTON");
+                frm.submit();
+            }
+        </script>
     </form>
 </body>
 </html>
