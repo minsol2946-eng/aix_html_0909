@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #detail{width: 400px;}
+    </style>
+        <script src="//t1.kakaocdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script>
+        function postBtn(){
+            alert("SEARCHING ZIP COCE: ");
+
+            new kakao.Postcode({
+                oncomplete: function(data) {
+                    console.log("ZIP CODE : ",data.zonecode)
+                    console.log("DETAIL : ",data.address)
+                    document.getElementById("zipcode").value=data.zonecode;
+                    document.getElementById("detail").value=data.address;
+                }
+            }).open();}
+    </script>
+</head>
+
+<body>
+    <form name="frm" action="p0910_05.html" method="get">
+        <label>[ID]</label>
+        <input type="text" name="id" id="id"><br>
+        <label>[PW]</label>
+        <input type="text" name="password" id="pw"><br>
+
+        <label>[NAME]</label>
+        <input type="text" name="name" id="name"><br>
+
+        <label>[ADDRESS]</label><br>
+        <label>[ZIP CODE]</label>
+        <input type="text" name="zipcode" id="zipcode">
+        <button type="button" onclick="postBtn()">[SEARCH]</button><br>
+        <label>[DETAILED]</label>
+        <input type="text" name="detail" id="detail"><br>
+
+        <label>[GENDER]</label><br>
+        <input type="radio" name="man" id="man"><label>[MAN]</label>
+        <input type="radio" name="woman" id="woman"><label>[WOMAN]</label>
+        <br>
+
+        <label>[HOBBY]</label><br>
+        <input type="checkbox" name="hobby" id="game" value="게임">
+        <label for="game">[GAME]</label>
+        <input type="checkbox" name="swim" id="swim">
+        <label for="swim">[SWIM]</label>
+        <input type="checkbox" name="read" id="read">
+        <label for="read">[READ A BOOK]</label>
+        <input type="checkbox" name="run" id="run">
+        <label for="run">[RUNNING]</label>
+        <input type="checkbox" name="watch" id="watch">
+        <label for="watch">[WATCH A MOVIE]</label><br>
+
+        <label>[MAJOR]</label>
+        <select name="MAJOR">
+            <option value="COMPUTER">COMPUTER</option>
+            <option value="KOREAN">KOREAN</option>
+            <option value="ARCHITECULTURAL">ARCHITECULTURAL</option>
+            <option value="MATH">MATH</option>
+            <option value="ART">ART</option>
+            <option value="ETC">ETC</option>
+        </select>
+        <br>
+        <br>
+        <textarea rows="20" cols="80"></textarea>
+        <br>
+        <br>
+
+        <input type="submit" value="[SEND]">
+        <button type="button">[SEND]</button>
+    </form>
+</body>
+</html>
