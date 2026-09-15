@@ -50,19 +50,30 @@ while True:
 
     else:
         correction()
-        # print("[성적 수정]")
-        # name=input("찾는 학생의 이름을 입력하세요>>  ")
-        # temp=0
-        # for i,s in enumerate(student):
-        #     if s['name']==name:
-        #         print(f"찾으시는 {name} 학생의 데이터가 있습니다.")
-        #         temp=1
-        #         break
-        # if temp==0:
-        #     print(f"{name}의 데이터가 없습니다.")
-        # elif temp==1:
-        #     print("[수정 과목 선택]")
-        #     print("1.국어   2.영어   3.수학")
-        #     choice=int(input("원하는 번호 입력>>  "))
+        print("[성적 수정]")
+        name=input("찾는 학생의 이름을 입력하세요>>  ")
+        temp=0
+        for i,s in enumerate(student):
+            if s['name']==name:
+                print(f"찾으시는 {name} 학생의 데이터가 있습니다.")
+                temp=1
+                break
+        if temp==0:
+            print(f"{name}의 데이터가 없습니다.")
+        elif temp==1:
+            print("[수정 과목 선택]")
+            print("1.국어   2.영어   3.수학")
+            choice=int(input("과목을 선택하세요.>>  "))
+            if choice==0:break
+            elif choice==1:
+                print("[국어 점수 변경]")
+                print("현재 국어 점수: ")
+            elif choice==2:
+                print("[영어 점수 변경]")
+                print("현재 영어 점수: ")
+            elif choice==3:
+                print("[수학 점수 변경]")
+                print("현재 수학 점수: ")
 
-            
+    if temp==0:
+        print(f"{'name'}의 데이터가 없습니다.")
