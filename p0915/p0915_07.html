@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>RESOM NEWS</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Noto Sans KR", Arial, sans-serif;
+            color: #333;
+            background: #fff;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        button,
+        input,
+        select {
+            font-family: inherit;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            width: 100%;
+            border-bottom: 1px solid #eee;
+            background: #fff;
+        }
+
+        .header-inner {
+            width: 1200px;
+            height: 85px;
+            margin: 0 auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #243f34;
+        }
+
+        .logo span {
+            font-weight: 300;
+        }
+
+        .gnb {
+            display: flex;
+            gap: 45px;
+        }
+
+        .gnb a {
+            font-size: 16px;
+            color: #333;
+            transition: 0.3s;
+        }
+
+        .gnb a:hover {
+            color: #527b66;
+        }
+
+        .header-btn {
+            display: flex;
+            gap: 10px;
+        }
+
+        .header-btn a {
+            font-size: 13px;
+            color: #777;
+        }
+
+
+        /* =========================
+           TOP IMAGE
+        ========================= */
+
+        .visual {
+            width: 100%;
+            height: 380px;
+
+            background-image:
+                linear-gradient(
+                    rgba(0, 0, 0, 0.25),
+                    rgba(0, 0, 0, 0.25)
+                ),
+                url("https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=2000&q=80");
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: white;
+            text-align: center;
+        }
+
+        .visual h1 {
+            font-size: 48px;
+            font-weight: 400;
+            letter-spacing: 5px;
+        }
+
+        .visual p {
+            margin-top: 15px;
+            font-size: 15px;
+            letter-spacing: 1px;
+        }
+
+
+        /* =========================
+           CONTENT
+        ========================= */
+
+        .container {
+            width: 1200px;
+            margin: 0 auto;
+        }
+
+        .breadcrumb {
+            padding-top: 30px;
+            color: #999;
+            font-size: 13px;
+        }
+
+        .breadcrumb span {
+            margin: 0 8px;
+            color: #ccc;
+        }
+
+        .page-title {
+            text-align: center;
+            padding: 70px 0 45px;
+        }
+
+        .page-title h2 {
+            font-size: 36px;
+            font-weight: 500;
+            letter-spacing: 2px;
+        }
+
+        .page-title p {
+            margin-top: 15px;
+            color: #888;
+            font-size: 15px;
+        }
+
+
+        /* =========================
+           CATEGORY
+        ========================= */
+
+        .category {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .category button {
+            width: 170px;
+            height: 50px;
+
+            border: none;
+            background: #fff;
+
+            border-bottom: 2px solid transparent;
+
+            color: #777;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .category button:hover,
+        .category button.active {
+            color: #2e5844;
+            border-bottom: 2px solid #2e5844;
+            font-weight: 600;
+        }
+
+
+        /* =========================
+           SEARCH
+        ========================= */
+
+        .search-box {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 35px;
+        }
+
+        .search-box select {
+            width: 120px;
+            height: 45px;
+
+            padding: 0 10px;
+
+            border: 1px solid #ddd;
+            background: #fff;
+
+            font-size: 14px;
+        }
+
+        .search-box input {
+            width: 350px;
+            height: 45px;
+
+            padding: 0 15px;
+
+            border: 1px solid #ddd;
+            border-left: none;
+
+            outline: none;
+        }
+
+        .search-box button {
+            width: 80px;
+            height: 45px;
+
+            border: none;
+            background: #2e5844;
+
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .search-box button:hover {
+            background: #1f4131;
+        }
+
+
+        /* =========================
+           NEWS TABLE
+        ========================= */
+
+        .news-table {
+            width: 100%;
+            border-top: 2px solid #333;
+            border-collapse: collapse;
+        }
+
+        .news-table th {
+            height: 60px;
+
+            background: #f7f7f7;
+
+            border-bottom: 1px solid #ddd;
+
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .news-table td {
+            height: 65px;
+
+            border-bottom: 1px solid #eee;
+
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .news-table th:first-child,
+        .news-table td:first-child {
+            width: 100px;
+        }
+
+        .news-table th:nth-child(2),
+        .news-table td:nth-child(2) {
+            text-align: left;
+        }
+
+        .news-table th:nth-child(3),
+        .news-table td:nth-child(3) {
+            width: 150px;
+        }
+
+        .news-table th:nth-child(4),
+        .news-table td:nth-child(4) {
+            width: 130px;
+        }
+
+        .news-title {
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .news-title:hover {
+            color: #2e5844;
+        }
+
+
+        /* =========================
+           PAGINATION
+        ========================= */
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            gap: 8px;
+
+            margin: 50px 0 90px;
+        }
+
+        .pagination button {
+            width: 35px;
+            height: 35px;
+
+            border: 1px solid #ddd;
+            background: #fff;
+
+            cursor: pointer;
+            color: #777;
+        }
+
+        .pagination button:hover,
+        .pagination button.active {
+            background: #2e5844;
+            color: white;
+            border-color: #2e5844;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #28352f;
+            color: #bbb;
+            padding: 55px 0;
+        }
+
+        .footer-inner {
+            width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            color: white;
+            font-size: 24px;
+            margin-bottom: 25px;
+        }
+
+        .footer-menu {
+            display: flex;
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+
+        .footer-menu a {
+            font-size: 13px;
+            color: #ddd;
+        }
+
+        .footer-info {
+            line-height: 1.9;
+            font-size: 13px;
+        }
+
+        .copyright {
+            margin-top: 25px;
+            font-size: 11px;
+            color: #777;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 768px) {
+
+            .header-inner,
+            .container,
+            .footer-inner {
+                width: 90%;
+            }
+
+            .header-inner {
+                height: 70px;
+            }
+
+            .gnb {
+                display: none;
+            }
+
+            .visual {
+                height: 280px;
+            }
+
+            .visual h1 {
+                font-size: 36px;
+            }
+
+            .category {
+                overflow-x: auto;
+                justify-content: flex-start;
+            }
+
+            .category button {
+                flex-shrink: 0;
+                width: 130px;
+            }
+
+            .search-box {
+                width: 100%;
+            }
+
+            .search-box select {
+                width: 90px;
+            }
+
+            .search-box input {
+                width: calc(100% - 170px);
+            }
+
+            .news-table th:first-child,
+            .news-table td:first-child {
+                width: 60px;
+            }
+
+            .news-table th:nth-child(3),
+            .news-table td:nth-child(3) {
+                width: 90px;
+            }
+
+            .news-table th:nth-child(4),
+            .news-table td:nth-child(4) {
+                display: none;
+            }
+
+            .news-table td {
+                height: 60px;
+                font-size: 13px;
+            }
+
+            .footer-menu {
+                flex-wrap: wrap;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+    <div class="header-inner">
+
+        <div class="logo">
+            RESOM <span>NEWS</span>
+        </div>
+
+        <nav class="gnb">
+
+            <a href="#">리조트 소개</a>
+            <a href="#">객실</a>
+            <a href="#">스파</a>
+            <a href="#">즐길거리</a>
+            <a href="#">예약</a>
+
+        </nav>
+
+        <div class="header-btn">
+
+            <a href="#">로그인</a>
+            <a href="#">회원가입</a>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================
+     TOP IMAGE
+========================= -->
+
+<section class="visual">
+
+    <div>
+
+        <h1>NEWS</h1>
+
+        <p>
+            RESOM FOREST
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     CONTENT
+========================= -->
+
+<main>
+
+    <div class="container">
+
+
+        <!-- breadcrumb -->
+
+        <div class="breadcrumb">
+
+            HOME
+            <span>></span>
+            리조트 소식
+            <span>></span>
+            뉴스
+
+        </div>
+
+
+
+        <!-- title -->
+
+        <div class="page-title">
+
+            <h2>뉴스</h2>
+
+            <p>
+                리조트의 새로운 소식을 알려드립니다.
+            </p>
+
+        </div>
+
+
+
+        <!-- category -->
+
+        <div class="category">
+
+            <button class="active"
+                    onclick="filterNews('전체', this)">
+                전체
+            </button>
+
+            <button onclick="filterNews('포레스트', this)">
+                포레스트 리솜
+            </button>
+
+            <button onclick="filterNews('레스트리', this)">
+                레스트리
+            </button>
+
+            <button onclick="filterNews('아일랜드', this)">
+                아일랜드 리솜
+            </button>
+
+            <button onclick="filterNews('스플라스', this)">
+                스플라스 리솜
+            </button>
+
+        </div>
+
+
+
+        <!-- search -->
+
+        <div class="search-box">
+
+            <select id="searchType">
+
+                <option value="title">
+                    제목
+                </option>
+
+                <option value="content">
+                    내용
+                </option>
+
+            </select>
+
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="검색어를 입력해주세요."
+            >
+
+
+            <button onclick="searchNews()">
+                검색
+            </button>
+
+        </div>
+
+
+
+        <!-- news table -->
+
+        <table class="news-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>번호</th>
+
+                    <th>제목</th>
+
+                    <th>리조트</th>
+
+                    <th>등록일</th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="newsList">
+
+            </tbody>
+
+        </table>
+
+
+
+        <!-- pagination -->
+
+        <div class="pagination">
+
+            <button>«</button>
+            <button>‹</button>
+
+            <button class="active">
+                1
+            </button>
+
+            <button>2</button>
+
+            <button>3</button>
+
+            <button>›</button>
+            <button>»</button>
+
+        </div>
+
+
+    </div>
+
+</main>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="footer-inner">
+
+        <div class="footer-logo">
+            RESOM
+        </div>
+
+
+        <div class="footer-menu">
+
+            <a href="#">회사소개</a>
+            <a href="#">오시는 길</a>
+            <a href="#">개인정보처리방침</a>
+            <a href="#">이용약관</a>
+            <a href="#">이메일무단수집거부</a>
+
+        </div>
+
+
+        <div class="footer-info">
+
+            포레스트 리솜<br>
+            충청북도 제천시 백운면 금봉로 365<br>
+            대표번호 : 043-649-6000
+            &nbsp;&nbsp;
+            예약문의 : 1600-0060
+
+        </div>
+
+
+        <div class="copyright">
+
+            COPYRIGHT © RESOM. ALL RIGHTS RESERVED.
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<script>
+
+
+/* =========================
+   NEWS DATA
+========================= */
+
+const newsData = [
+
+    {
+        no: 16,
+        title: "조식 메뉴 개편 및 이용요금 변경 안내",
+        resort: "포레스트",
+        date: "2026-09-08"
+    },
+
+    {
+        no: 15,
+        title: "유아용 웨건 '원더폴드(wonderfold)' 대여 서비스",
+        resort: "포레스트",
+        date: "2026-08-10"
+    },
+
+    {
+        no: 14,
+        title: "[PB] 리솜 프리미엄 LA 갈비 세트 출시",
+        resort: "포레스트",
+        date: "2026-01-15"
+    },
+
+    {
+        no: 13,
+        title: "[2025 사진공모전] 눈부시게 푸르른 날 수상작 발표",
+        resort: "포레스트",
+        date: "2026-01-09"
+    },
+
+    {
+        no: 12,
+        title: "[포레스트] 사우나 및 스파 전 시설 휴장 안내",
+        resort: "포레스트",
+        date: "2026-01-02"
+    },
+
+    {
+        no: 11,
+        title: "[리솜리조트] CCM 인증 획득 안내",
+        resort: "포레스트",
+        date: "2025-12-12"
+    },
+
+    {
+        no: 10,
+        title: "해브나인 스파 아쿠아슈즈 필수착용 안내",
+        resort: "포레스트",
+        date: "2025-09-29"
+    },
+
+    {
+        no: 9,
+        title: "제1회 호반 시그니처 메뉴 경진대회 개최",
+        resort: "포레스트",
+        date: "2025-06-12"
+    },
+
+    {
+        no: 8,
+        title: "[2025 사진공모전] 눈부시게 푸르른 날",
+        resort: "포레스트",
+        date: "2025-04-28"
+    },
+
+    {
+        no: 7,
+        title: "[PB] 어메니티 리뉴얼 안내",
+        resort: "포레스트",
+        date: "2025-01-17"
+    },
+
+    {
+        no: 6,
+        title: "익스프레스 체크아웃 서비스 오픈",
+        resort: "포레스트",
+        date: "2024-09-02"
+    },
+
+    {
+        no: 5,
+        title: "안전한 먹거리 제공을 위한 업무협약 체결",
+        resort: "포레스트",
+        date: "2024-07-11"
+    }
+
+];
+
+
+let currentCategory = "전체";
+
+
+/* =========================
+   NEWS 출력
+========================= */
+
+function displayNews(data) {
+
+    const list = document.getElementById("newsList");
+
+    list.innerHTML = "";
+
+
+    if (data.length === 0) {
+
+        list.innerHTML = `
+            <tr>
+                <td colspan="4">
+                    검색 결과가 없습니다.
+                </td>
+            </tr>
+        `;
+
+        return;
+    }
+
+
+    data.forEach(function(news) {
+
+        const tr = document.createElement("tr");
+
+        tr.innerHTML = `
+
+            <td>
+                ${news.no}
+            </td>
+
+            <td>
+
+                <div
+                    class="news-title"
+                    onclick="viewNews(${news.no})"
+                >
+                    ${news.title}
+                </div>
+
+            </td>
+
+            <td>
+                ${news.resort}
+            </td>
+
+            <td>
+                ${news.date}
+            </td>
+
+        `;
+
+        list.appendChild(tr);
+
+    });
+
+}
+
+
+/* =========================
+   CATEGORY FILTER
+========================= */
+
+function filterNews(category, button) {
+
+    currentCategory = category;
+
+
+    document
+        .querySelectorAll(".category button")
+        .forEach(function(btn) {
+
+            btn.classList.remove("active");
+
+        });
+
+
+    button.classList.add("active");
+
+
+    if (category === "전체") {
+
+        displayNews(newsData);
+
+    } else {
+
+        const result = newsData.filter(function(news) {
+
+            return news.resort === category;
+
+        });
+
+        displayNews(result);
+
+    }
+
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+function searchNews() {
+
+    const keyword =
+        document
+        .getElementById("searchInput")
+        .value
+        .trim()
+        .toLowerCase();
+
+
+    let result = newsData;
+
+
+    /* 카테고리 */
+
+    if (currentCategory !== "전체") {
+
+        result = result.filter(function(news) {
+
+            return news.resort === currentCategory;
+
+        });
+
+    }
+
+
+    /* 검색 */
+
+    if (keyword !== "") {
+
+        result = result.filter(function(news) {
+
+            return news.title
+                .toLowerCase()
+                .includes(keyword);
+
+        });
+
+    }
+
+
+    displayNews(result);
+
+}
+
+
+/* =========================
+   ENTER SEARCH
+========================= */
+
+document
+    .getElementById("searchInput")
+    .addEventListener("keyup", function(event) {
+
+        if (event.key === "Enter") {
+
+            searchNews();
+
+        }
+
+    });
+
+
+/* =========================
+   NEWS DETAIL
+========================= */
+
+function viewNews(no) {
+
+    const news =
+        newsData.find(function(item) {
+
+            return item.no === no;
+
+        });
+
+
+    if (news) {
+
+        alert(
+            "제목 : " + news.title +
+            "\n리조트 : " + news.resort +
+            "\n등록일 : " + news.date
+        );
+
+    }
+
+}
+
+
+/* 최초 실행 */
+
+displayNews(newsData);
+
+</script>
+
+
+</body>
+</html>
