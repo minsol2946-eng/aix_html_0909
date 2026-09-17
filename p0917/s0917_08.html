@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Document</title>
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+</style>
+
+</head>
+
+<body>
+
+<input type="text" name="name" id="name" placeholder="이름입력">
+
+<input type="text" name="kor" id="kor" placeholder="국어점수">
+
+<input type="text" name="eng" id="eng" placeholder="영어점수">
+
+<input type="text" name="math" id="math" placeholder="수학점수">
+
+<br>
+
+<button type="button" onclick="txtBtn()">저장</button>
+
+<table>
+    <tr>
+        <td>이름</td>
+        <td>국어</td>
+        <td>영어</td>
+        <td>수학</td>
+    </tr>
+
+    <tbody id="tbody">
+    </tbody>
+</table>
+
+
+<script>
+
+    // 이름 배열
+    var arr = ['홍길동','유관순','이순신'];
+
+    // 국어 점수 배열
+    var arr_k = [100,90,80];
+
+    //영어 점수 배열
+    var arr_e=[20,20,20]
+    //수학 점수 배열
+    var arr_m=[45,45,45]
+
+
+    function txtBtn(){
+
+        // tbody 가져오기
+        var nlist = document.getElementById("tbody");
+
+        // 이름 가져오기
+        var name = document.getElementById("name").value;
+
+        // 국어 점수 가져오기
+        var kor = document.getElementById("kor").value;
+        
+        //영어 점수 가져오기
+        var eng=document.getElementById("eng").value
+        
+        //수학 점수 가져오기
+        var math=document.getElementById("math").value
+
+        // 각각의 배열에 추가
+        arr.push(name);
+        arr_k.push(kor);
+        arr_e.push(eng);
+        arr_e.push(math);
+
+
+        console.log(arr);
+        console.log(arr_k);
+        console.log(arr_e);
+        console.log(arr_m);
+
+
+        // 입력창 비우기
+        document.getElementById("name").value = "";
+        document.getElementById("kor").value = "";
+        document.getElementById("eng").value = "";
+        document.getElementById("math").value = "";
+
+
+        // 화면에 추가
+        nlist.innerHTML += `
+            <tr>
+                <td>${name}</td>
+                <td>${kor}</td>
+                <td>${eng}</td>
+                <td>${math}</td>
+            </tr>
+        `;
+    }
+
+
+    // 처음 화면에 배열 출력
+    var txtHtml = ``;
+
+    for(var i=0; i<arr.length; i++){
+
+        txtHtml += `
+            <tr>
+                <td>${arr[i]}</td>
+                <td>${arr_k[i]}</td>
+                <td>${arr_e[i]}</td>
+                <td>${arr_m[i]}</td>
+            </tr>
+        `;
+    }
+
+    document.getElementById("tbody").innerHTML = txtHtml;
+
+</script>
+
+</body> </html>

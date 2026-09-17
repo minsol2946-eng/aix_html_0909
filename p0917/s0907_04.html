@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{width: 500px;margin: 0 auto; text-align: center;}
+    table,th,td{border:1px solid black; border-collapse: collapse;}
+    th,td{width: 100px;height: 40px;}
+</style>
+<!--document:화면 전체-->
+<body>
+        <div>
+        <h3>구구단</h3>
+            <div id="d01">100
+            </div>
+        <table id="tab">
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+
+
+    
+    <script>
+        //for(초기값;조건식;증감식){}
+    // for(var i=1;i<=10;i++){document.write(i+"<br>")}
+
+    //100을 넘는 시점에서 i값을 출력하시오.
+    // var sum=0;
+    // var i=0;
+    // for(var i=1;i<=100;i++){
+    //     if(sum>=100){break;}
+    //     sum+=i;}
+    // document.write("합계: "+sum); 
+    // document.write("i: "+(i-1))
+
+    
+    //1~100홀수 값만 더하세요.
+    // var sum=0;
+    // for(var i=1;i<=100;i++)
+    //     if(i%2==1){sum+=i;}
+
+    // document.write("홀수 합계: "+sum)
+
+
+    //구구단
+    // for(var i=2;i<=9;i++)
+    //     for(var j=1;j<=9;j++)
+    //         {document.write("${i}x${j}=${i*j}");}
+
+
+        document.getElementById("d01").innerHTML="<h2>1000</h2>"
+        document.write(`)
+        for(var i=2;i<=9;i++){
+            for(var j=1;j<=9;j++)
+                {document.write("${i}x${j}=${i*j}");}}
+
+    </script>
+
+    </body>
+</html>

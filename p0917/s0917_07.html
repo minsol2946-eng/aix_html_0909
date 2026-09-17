@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,th,td{border:1px solid black; border-collapse: collapse;}
+
+    </style>
+</head>
+<body>
+    <input type="text" name="name" id="name" placeholder="이름입력">
+    <br>
+    <button type="button" onclick="txtBtn()">저장</button>
+    <table>
+        <tr>
+            <td>이름</td>
+        </tr>
+        <tbody id="tbody">
+            <tr>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        var arr=['홍길동','유관순','이순신']
+        function txtBtn(){
+            var nlist=document.getElementById("tbody");
+            var name=document.getElementById("name").value;
+            arr.push(name);
+            console.log(arr);
+            document.getElementById("name").value ="";
+            nlist.innerHTML +=`<tr><td>${name}</tr></td>`;
+        }
+        var txtHtml=``;
+        for(var i=0;i<arr.length;i++){
+            txtHtml += `<tr><td>${arr[i]}</tr></td>`;
+        }
+        document.getElementById("tbody").innerHTML=txtHtml;
+        // var arr=[1,2,3,4,]
+        // for(var i=0;i<5;i++)
+        // {document.write(arr[i]+"<br>")}
+
+
+        // arr,push(10);
+        // arr,push(9);
+        // arr,push(8);
+        // consol.log("배열: ",arr);
+        // arr.pop()
+        // consol.log("배열2: ",arr);
+        // cinsil.log("길이: ",arr.length)
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{width:500px; margin:0 auto; text-align: center; }
+        table,th,td{border:1px solid black; border-collapse: collapse;}
+        th,td{width:100px; height:40px;}
+    </style>
+</head>
+<body>
+    <div>
+        <h2>구구단</h2>
+        <table id="d01"></table>
+    </div>
+    <script>
+        //document.getElementById("d01").innerText = `글자넣기`;
+        var txtHtml = ``;
+        for(var i=2;i<=9;i++){
+            for(var j=1;j<=9;j++){
+                 txtHtml += `<tr>
+                    <td>${i}</td>
+                    <td>x</td>
+                    <td>${j}</td>
+                    <td>=</td>
+                    <td>${i*j}</td>
+                </tr>`;
+                }
+        }
+        document.getElementById("d01").innerHTML = txtHtml;
+    </script>
+</body>
+</html>

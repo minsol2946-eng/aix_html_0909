@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    table,tr,td{border:1px solid black; border-collapse: collapse;}
+    table{width:1000px; text-align:center; box-sizing: border-box;
+    margin: 50px auto;}
+    th{background: #efefef; height:60px;}
+    td{height:40px;}
+</style>
+<body>
+    <table>
+        <colgroup>
+        <col width="10%">
+        <col width="*">
+        <col width="15%">
+        <col width="15%">
+        <col width="10%">
+        </colgroup>
+        <thead>
+        <tr>
+            <td>번호</td>
+            <td>내용</td>
+            <td>작성자</td>
+            <td>작성일</td>
+            <td>조회수</td>
+        </tr>
+        </thead>
+        <tbody id="tbody">
+
+        </tbody>
+    </table>
+
+    </div>
+    <script>
+        
+        //그냥 외워
+
+        var a=``; //변수 선언
+        for (var i=1;i<=10;i++)
+            {a+= `<tr><td>${i}</td><td>게시판 오픈합니다.</td><td>관리자</td><td>26-09-17</td><td>1</td></tr>`}
+            document.getElementById("tbody").innerHTML=a;
+        
+        
+        
+        
+        //var txtHtml='<h2>자바스크립트</2>';
+        //    for(var i=0;i<20;i++){txtHtml += ``;}
+         //       document.getElementById("d01").innerHTML=txtHtml
+    </script>
+    
+</body>
+</html>
