@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+        <title>RESOM LOGIN</title>
+
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: "Noto Sans KR", Arial, sans-serif;
+                color: #333;
+                background: #fff;
+            }
+
+            a {
+                text-decoration: none;
+                color: inherit;
+            }
+
+            /* =========================
+            HEADER
+            ========================= */
+
+            header {
+                height: 90px;
+                border-bottom: 1px solid #eee;
+                background: #fff;
+            }
+
+            .header-inner {
+                width: 1200px;
+                height: 100%;
+                margin: 0 auto;
+
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .logo {
+                font-family: Georgia, serif;
+                font-size: 30px;
+                letter-spacing: 4px;
+                color: #333;
+            }
+
+            .nav {
+                display: flex;
+                gap: 45px;
+            }
+
+            .nav a {
+                font-size: 15px;
+                color: #333;
+                transition: 0.3s;
+            }
+
+            .nav a:hover {
+                color: #8b7658;
+            }
+
+            .header-right {
+                display: flex;
+                gap: 15px;
+                font-size: 12px;
+                color: #777;
+            }
+
+            /* =========================
+            TOP VISUAL
+            ========================= */
+
+            .visual {
+                height: 330px;
+
+                background-image:
+                    linear-gradient(
+                        rgba(0, 0, 0, 0.15),
+                        rgba(0, 0, 0, 0.25)
+                    ),
+                    url("https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1800&q=80");
+
+                background-size: cover;
+                background-position: center;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                text-align: center;
+                color: #fff;
+            }
+
+            .visual h1 {
+                font-family: Georgia, serif;
+                font-size: 48px;
+                font-weight: normal;
+                letter-spacing: 8px;
+                margin-bottom: 15px;
+            }
+
+            .visual p {
+                font-size: 14px;
+                letter-spacing: 2px;
+            }
+
+            /* =========================
+            LOGIN
+            ========================= */
+
+            .login-section {
+                width: 500px;
+                margin: 80px auto 120px;
+            }
+
+            .login-title {
+                text-align: center;
+                margin-bottom: 45px;
+            }
+
+            .login-title h2 {
+                font-size: 32px;
+                font-weight: 400;
+                letter-spacing: 3px;
+                margin-bottom: 12px;
+            }
+
+            .login-title p {
+                color: #888;
+                font-size: 14px;
+            }
+
+            .login-form {
+                width: 100%;
+            }
+
+            .input-box {
+                margin-bottom: 12px;
+            }
+
+            .input-box input {
+                width: 100%;
+                height: 58px;
+                border: 1px solid #ddd;
+                padding: 0 18px;
+                font-size: 14px;
+                outline: none;
+                transition: 0.3s;
+            }
+
+            .input-box input:focus {
+                border-color: #777;
+            }
+
+            .login-button {
+                width: 100%;
+                height: 60px;
+
+                margin-top: 10px;
+
+                border: none;
+                background: #4c5148;
+                color: white;
+
+                font-size: 15px;
+                letter-spacing: 2px;
+
+                cursor: pointer;
+                transition: 0.3s;
+            }
+
+            .login-button:hover {
+                background: #333;
+            }
+
+            /* =========================
+            LOGIN OPTIONS
+            ========================= */
+
+            .login-options {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                margin-top: 18px;
+
+                font-size: 13px;
+                color: #777;
+            }
+
+            .remember {
+                display: flex;
+                align-items: center;
+                gap: 7px;
+            }
+
+            .remember input {
+                width: 14px;
+                height: 14px;
+            }
+
+            .find-menu {
+                display: flex;
+                gap: 12px;
+            }
+
+            .find-menu a:hover {
+                color: #333;
+            }
+
+            /* =========================
+            SIGN UP
+            ========================= */
+
+            .join-box {
+                margin-top: 45px;
+                padding-top: 30px;
+
+                border-top: 1px solid #eee;
+
+                text-align: center;
+            }
+
+            .join-box p {
+                font-size: 13px;
+                color: #777;
+                margin-bottom: 18px;
+            }
+
+            .join-button {
+                display: inline-flex;
+
+                width: 180px;
+                height: 48px;
+
+                align-items: center;
+                justify-content: center;
+
+                border: 1px solid #555;
+                background: white;
+
+                font-size: 13px;
+
+                transition: 0.3s;
+            }
+
+            .join-button:hover {
+                background: #555;
+                color: white;
+            }
+
+            /* =========================
+            FOOTER
+            ========================= */
+
+            footer {
+                background: #f7f7f5;
+                padding: 45px 0;
+                color: #777;
+                font-size: 12px;
+            }
+
+            .footer-inner {
+                width: 1200px;
+                margin: 0 auto;
+            }
+
+            .footer-menu {
+                display: flex;
+                gap: 25px;
+                margin-bottom: 25px;
+            }
+
+            .footer-menu a {
+                color: #555;
+            }
+
+            .footer-info {
+                line-height: 2;
+            }
+
+            .copyright {
+                margin-top: 15px;
+                color: #999;
+            }
+
+            /* =========================
+            MOBILE
+            ========================= */
+
+            @media (max-width: 768px) {
+
+                header {
+                    height: auto;
+                }
+
+                .header-inner {
+                    width: 90%;
+                    height: 80px;
+                }
+
+                .nav {
+                    display: none;
+                }
+
+                .header-right {
+                    font-size: 11px;
+                }
+
+                .visual {
+                    height: 250px;
+                }
+
+                .visual h1 {
+                    font-size: 36px;
+                }
+
+                .login-section {
+                    width: 90%;
+                    margin: 60px auto 80px;
+                }
+
+                .login-title h2 {
+                    font-size: 28px;
+                }
+
+                .login-options {
+                    font-size: 12px;
+                }
+
+                .footer-inner {
+                    width: 90%;
+                }
+            }
+        </style>
+
+</head>
+
+<body>
+<!-- HEADER -->
+    <header>
+
+        <div class="header-inner">
+
+            <div class="logo">
+                RESOM
+            </div>
+
+            <nav class="nav">
+                <a href="#">포레스트</a>
+                <a href="#">스파</a>
+                <a href="#">객실</a>
+                <a href="#">특별한 경험</a>
+                <a href="#">부대시설</a>
+                <a href="#">예약</a>
+            </nav>
+
+            <div class="header-right">
+                <a href="#">로그인</a>
+                <a href="#">회원가입</a>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- TOP IMAGE -->
+    <section class="visual">
+
+        <div>
+            <h1>LOGIN</h1>
+            <p>RESOM FOREST</p>
+        </div>
+
+    </section>
+
+
+    <!-- LOGIN -->
+    <main>
+
+        <section class="login-section">
+
+            <div class="login-title">
+
+                <h2>로그인</h2>
+
+                <p>
+                    리솜의 다양한 서비스를 이용하시려면 로그인해주세요.
+                </p>
+
+            </div>
+
+
+            <form class="login-form" onsubmit="login(event)">
+
+                <div class="input-box">
+                    <input
+                        type="text"
+                        id="userId"
+                        placeholder="아이디"
+                    >
+                </div>
+
+                <div class="input-box">
+                    <input
+                        type="password"
+                        id="userPw"
+                        placeholder="비밀번호"
+                    >
+                </div>
+
+                <button
+                    type="submit"
+                    class="login-button">
+                    LOGIN
+                </button>
+
+            </form>
+
+
+            <div class="login-options">
+
+                <label class="remember">
+                    <input type="checkbox">
+                    <span>아이디 저장</span>
+                </label>
+
+                <div class="find-menu">
+                    <a href="#">아이디 찾기</a>
+                    <span>|</span>
+                    <a href="#">비밀번호 찾기</a>
+                </div>
+
+            </div>
+
+
+            <div class="join-box">
+
+                <p>
+                    아직 리솜 회원이 아니신가요?
+                </p>
+
+                <a href="#" class="join-button">
+                    회원가입
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <div class="footer-inner">
+
+            <div class="footer-menu">
+                <a href="#">회사소개</a>
+                <a href="#">오시는 길</a>
+                <a href="#">개인정보처리방침</a>
+                <a href="#">이용약관</a>
+            </div>
+
+            <div class="footer-info">
+                포레스트 리솜 충청북도 제천시 백운면 금봉로 365<br>
+                대표번호 : 043-649-6000
+                &nbsp;&nbsp;
+                예약문의 : 1600-0060
+            </div>
+
+            <div class="copyright">
+                COPYRIGHT © HOBAN HOTEL & RESORT. ALL RIGHTS RESERVED.
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <script>
+
+        function login(event) {
+
+            event.preventDefault();
+
+            let userId =
+                document.getElementById("userId").value;
+
+            let userPw =
+                document.getElementById("userPw").value;
+
+
+            if (userId == "") {
+
+                alert("아이디를 입력해주세요.");
+
+                document.getElementById("userId").focus();
+
+                return;
+            }
+
+
+            if (userPw == "") {
+
+                alert("비밀번호를 입력해주세요.");
+
+                document.getElementById("userPw").focus();
+
+                return;
+            }
+
+
+            alert("로그인 정보를 확인했습니다.");
+
+        }
+
+    </script>
+
+    </body>
+</html>
+

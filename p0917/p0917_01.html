@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin:0; padding:0; }
+        h3{width:200px; height:60px; border:1px solid black;
+        text-align: center; line-height:60px;
+        }
+        button{width:200px; height:30px;}
+    </style>
+</head>
+<body>
+    <h3>총점</h3>
+    <h3 id="total">0</h3>
+    <h3>평균</h3>
+    <h3 id="avg">0</h3>
+    <input type="text" name="kor" id="kor" placeholder="국어점수입력"><br>
+    <input type="text" name="eng" id="eng" placeholder="영어점수입력"><br>
+    <input type="text" name="math" id="math" placeholder="수학점수입력"><br>
+    <button type="button" onclick="btn()">저장</button>
+
+    <script>
+        //함수선언
+        function btn(){
+            var total = document.getElementById("total").innerText;
+            var total = document.getElementById("avg").innerText;
+            var kor = Number(document.getElementById("kor").value);
+            var eng = Number(document.getElementById("eng").value);
+            var math = Number(document.getElementById("math").value);
+            total = kor+eng+math;
+            avg=total/3;
+            alert(total)
+            alert(avg)
+            console.log("합계 : "+total)
+            document.getElementById("total").innerText=total
+            document.getElementById("avg").innerText=avg
+        }
+        
+        //타입 : str,int,float,boolean
+        //타입변경 : Number(),parseInt(),parseFloat(),toString()
+        //확인:console.log(),alert(),document.write(),confirm(),prompt()
+        //document.getElementById().value / innerText / innerHtml
+
+    </script>
+
+</body>
+</html>
