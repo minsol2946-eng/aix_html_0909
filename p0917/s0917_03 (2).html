@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>포레스트 리솜 - 로그인</title>
+    
+    <!-- Google Web Font -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            color: #333;
+            background: #fff;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            width: 100%;
+            height: 90px;
+            border-bottom: 1px solid #eee;
+            background: #fff;
+        }
+
+        .header_inner {
+            width: 1290px;
+            height: 90px;
+            margin: 0 auto;
+
+            display: flex;
+            align-items: center;
+        }
+
+        /* Logo */
+
+        .logo {
+            width: 150px;
+            font-size: 25px;
+            font-weight: 700;
+            letter-spacing: -2px;
+            color: #506a52;
+        }
+
+        .logo span {
+            display: block;
+            font-size: 11px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            color: #888;
+            margin-top: 2px;
+        }
+
+        /* Navigation */
+
+        nav {
+            flex: 1;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 42px;
+        }
+
+        nav li {
+            font-size: 15px;
+            color: #333;
+        }
+
+        nav li:hover {
+            color: #607d63;
+        }
+
+        /* Header Right */
+
+        .header_right {
+            width: 190px;
+
+            display: flex;
+            justify-content: flex-end;
+            gap: 18px;
+
+            font-size: 12px;
+            color: #777;
+        }
+
+        /* =========================
+           TOP IMAGE
+        ========================= */
+
+        .top_image {
+            width: 100%;
+            height: 330px;
+            background:url("images/bg_topBg1_2.jpg");
+
+            background-size: cover;
+            background-position: center;
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            position: relative;
+        }
+
+        /*
+            hero.jpg가 없을 경우를 위한 자연스러운 배경
+        */
+
+        .top_image::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:url("images/bg_topBg1_2.jpg");
+            z-index: 0;
+        }
+
+        .top_image .image_text {
+            position: relative;
+            z-index: 1;
+
+            text-align: center;
+            color: white;
+        }
+
+        .image_text h1 {
+            font-size: 38px;
+            font-weight: 400;
+            letter-spacing: -2px;
+        }
+
+        .image_text p {
+            margin-top: 12px;
+            font-size: 14px;
+            font-weight: 300;
+        }
+
+        /* =========================
+           BREADCRUMB
+        ========================= */
+
+        .breadcrumb {
+            width: 1200px;
+            margin: 0 auto;
+
+            height: 65px;
+
+            display: flex;
+            align-items: center;
+
+            font-size: 12px;
+            color: #888;
+        }
+
+        .breadcrumb span {
+            margin: 0 10px;
+            color: #bbb;
+        }
+
+        /* =========================
+           LOGIN
+        ========================= */
+
+        .login_section {
+            width: 100%;
+            padding: 55px 0 100px;
+        }
+
+        .login_title {
+            text-align: center;
+        }
+
+        .login_title h2 {
+            font-size: 30px;
+            font-weight: 400;
+            letter-spacing: -1px;
+            color: #333;
+        }
+
+        .login_title p {
+            margin-top: 12px;
+            font-size: 13px;
+            color: #999;
+        }
+
+        .login_box {
+            width: 430px;
+            margin: 40px auto 0;
+        }
+
+        /* Input */
+
+        .input_box {
+            width: 100%;
+            height: 55px;
+
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+
+            display: flex;
+            align-items: center;
+        }
+
+        .input_box input {
+            width: 100%;
+            height: 100%;
+
+            border: none;
+            outline: none;
+
+            padding: 0 18px;
+
+            font-family: inherit;
+            font-size: 14px;
+        }
+
+        .input_box input::placeholder {
+            color: #aaa;
+        }
+
+        /* Login Button */
+
+        .login_button {
+            width: 100%;
+            height: 58px;
+
+            margin-top: 10px;
+
+            border: none;
+
+            background: #526d55;
+            color: white;
+
+            font-family: inherit;
+            font-size: 15px;
+
+            cursor: pointer;
+        }
+
+        .login_button:hover {
+            background: #435c46;
+        }
+
+        /* Login Option */
+
+        .login_option {
+            margin-top: 18px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            font-size: 12px;
+            color: #888;
+        }
+
+        .remember {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .remember input {
+            accent-color: #526d55;
+        }
+
+        .login_links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .login_links a:hover {
+            color: #526d55;
+        }
+
+        /* Divider */
+
+        .divider {
+            width: 100%;
+            height: 1px;
+
+            background: #eee;
+
+            margin: 35px 0;
+        }
+
+        /* Join */
+
+        .join_box {
+            text-align: center;
+        }
+
+        .join_box p {
+            font-size: 13px;
+            color: #777;
+            margin-bottom: 15px;
+        }
+
+        .join_button {
+            display: inline-flex;
+
+            width: 200px;
+            height: 48px;
+
+            border: 1px solid #526d55;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 13px;
+            color: #526d55;
+        }
+
+        .join_button:hover {
+            background: #526d55;
+            color: white;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #333;
+            color: #aaa;
+            padding: 45px 0;
+        }
+
+        .footer_inner {
+            width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer_menu {
+            display: flex;
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+
+        .footer_menu a {
+            font-size: 12px;
+        }
+
+        .footer_menu a:hover {
+            color: white;
+        }
+
+        .footer_info {
+            font-size: 11px;
+            line-height: 2;
+            color: #888;
+        }
+
+        .copyright {
+            margin-top: 18px;
+            font-size: 10px;
+            color: #666;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media screen and (max-width: 1290px) {
+
+            .header_inner {
+                width: 94%;
+            }
+
+            .breadcrumb {
+                width: 94%;
+            }
+
+            .footer_inner {
+                width: 94%;
+            }
+
+            nav ul {
+                gap: 20px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+
+            header {
+                height: auto;
+            }
+
+            .header_inner {
+                height: 70px;
+            }
+
+            .logo {
+                width: 120px;
+                font-size: 20px;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .header_right {
+                flex: 1;
+            }
+
+            .top_image {
+                height: 230px;
+            }
+
+            .image_text h1 {
+                font-size: 30px;
+            }
+
+            .login_section {
+                padding: 40px 20px 70px;
+            }
+
+            .login_box {
+                width: 100%;
+            }
+
+            .footer_inner {
+                width: 90%;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <header>
+
+        <div class="header_inner">
+
+            <div class="logo">
+                FOREST
+                <span>RESOM</span>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="#">포레스트</a></li>
+                    <li><a href="#">스파</a></li>
+                    <li><a href="#">객실</a></li>
+                    <li><a href="#">특별한 경험</a></li>
+                    <li><a href="#">부대시설</a></li>
+                    <li><a href="#">브랜드소개</a></li>
+                    <li><a href="#">예약</a></li>
+                </ul>
+            </nav>
+
+            <div class="header_right">
+                <a href="#">로그인</a>
+                <a href="#">회원가입</a>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         TOP IMAGE
+    ========================= -->
+
+    <section class="top_image">
+
+        <div class="image_text">
+
+            <h1>LOGIN</h1>
+
+            <p>
+                포레스트 리솜 회원 서비스를 이용해보세요.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         BREADCRUMB
+    ========================= -->
+
+    <div class="breadcrumb">
+
+        <a href="#">HOME</a>
+
+        <span>›</span>
+
+        <a href="#">MEMBERSHIP</a>
+
+        <span>›</span>
+
+        <strong>LOGIN</strong>
+
+    </div>
+
+
+    <!-- =========================
+         LOGIN SECTION
+    ========================= -->
+
+    <main>
+
+        <section class="login_section">
+
+            <div class="login_title">
+
+                <h2>로그인</h2>
+
+                <p>
+                    포레스트 리솜의 다양한 서비스를 이용하실 수 있습니다.
+                </p>
+
+            </div>
+
+
+            <div class="login_box">
+
+                <!-- ID -->
+
+                <div class="input_box">
+
+                    <input
+                        type="text"
+                        id="userId"
+                        placeholder="아이디를 입력해주세요"
+                    >
+
+                </div>
+
+
+                <!-- PASSWORD -->
+
+                <div class="input_box">
+
+                    <input
+                        type="password"
+                        id="userPw"
+                        placeholder="비밀번호를 입력해주세요"
+                    >
+
+                </div>
+                <div style="color:red;font-size:13px;" id="txt"></div>
+
+                <!-- LOGIN BUTTON -->
+
+                <button
+                    type="button"
+                    class="login_button"
+                    onclick="login()"
+                >
+                    로그인
+                </button>
+
+
+                <!-- OPTIONS -->
+
+                <div class="login_option">
+
+                    <label class="remember">
+
+                        <input
+                            type="checkbox"
+                            id="remember"
+                        >
+
+                        <span>아이디 저장</span>
+
+                    </label>
+
+
+                    <div class="login_links">
+
+                        <a href="#">아이디 찾기</a>
+
+                        <a href="#">비밀번호 찾기</a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DIVIDER -->
+
+                <div class="divider"></div>
+
+
+                <!-- JOIN -->
+
+                <div class="join_box">
+
+                    <p>
+                        아직 회원이 아니신가요?
+                    </p>
+
+                    <a
+                        href="#"
+                        class="join_button"
+                    >
+                        회원가입
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <div class="footer_inner">
+
+            <div class="footer_menu">
+
+                <a href="#">회사소개</a>
+                <a href="#">오시는 길</a>
+                <a href="#">개인정보처리방침</a>
+                <a href="#">이용약관</a>
+                <a href="#">이메일무단수집거부</a>
+
+            </div>
+
+
+            <div class="footer_info">
+
+                포레스트 리솜 충청북도 제천시 백운면 금봉로 365<br>
+
+                대표번호 : 043-649-6000
+                &nbsp;&nbsp;
+                예약문의 : 1600-0060
+                &nbsp;&nbsp;
+                단체문의 : 02-6177-5999
+
+            </div>
+
+
+            <div class="copyright">
+
+                COPYRIGHT(C) HOBAN HOTEL & RESORT.
+                ALL RIGHTS RESERVED.
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        function login() {
+            // 변수선언 var-예전버전, let-최근버전, const-상수
+            // var a = 10;
+            const userId = document.getElementById("userId").value;
+            const userPw = document.getElementById("userPw").value;
+
+            if (userId === "") {
+                alert("아이디를 입력해주세요.");
+                document.getElementById("userId").focus();
+                return;
+            }
+
+            if (userPw === "") {
+                alert("비밀번호를 입력해주세요.");
+                document.getElementById("userPw").focus();
+                return;
+            }
+
+            //아이디 또는 패스워드가 일치하지 않습니다.
+            if(userId=="aaa"){
+                //alert("아이디가 맞습니다.");
+                if(userPw=="1111"){
+                    alert("로그인이 되었습니다.");
+                }else{
+                    document.getElementById("txt").innerText
+                    ="아이디 또는 패스워드가 일치하지 않습니다.";
+                    //alert("패스워드가 일치하지 않습니다. 다시 로그인해주세요.");
+                }
+            }else{
+                document.getElementById("txt").innerText
+                    ="아이디 또는 패스워드가 일치하지 않습니다.";
+                //alert("아이디가 일치하지 않습니다. 다시 로그인해주세요.");
+            }
+            
+
+        }
+
+    </script>
+
+</body>
+</html>
+
