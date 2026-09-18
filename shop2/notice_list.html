@@ -30,10 +30,10 @@
                     for(var i=0;i<10;i++){
                       txtHtml += `<tr>
                           <td>${students[i].galContentId}</td>
-                          <td class="table-title">${students[i].galContentId}</td>
-                          <td>${students[i].galContentId}</td>
-                          <td>${students[i].galContentId}</td>
-                          <td><img src="${students[i].galContentId}"></td>
+                          <td class="table-title">${students[i].galTitle}</td>
+                          <td>${students[i].galPhotographyMonth}</td>
+                          <td>${students[i].galPhotographer}</td>
+                          <td><img style="width:100px;" src="${students[i].galWebImageUrl}"></td>
                         </tr>`;
                     }
                     $("#tbody").html(txtHtml);
