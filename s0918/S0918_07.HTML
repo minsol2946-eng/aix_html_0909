@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <title>Document</title>
+    <script>
+        //document.getElementById("title").innerText="대학성적";
+        $(function(){
+            $("#title").text("대학생성적제이쿼리");
+        });    //약식 제이쿼리
+        // $(document).ready(function(){}) //기본 제이쿼리
+    </script>
+</head>
+<body>
+    <!--제이쿼리: 자바스크립트 라이브러리(함수 도서관)-->
+    <h2 id="title">학생성적프로그램</h2>
+    <input type="text" name="kor" id="kor"><br>
+    <input type="text" name="eng" id="eng"><br>
+    <input type="text" name="math" id="math"><br>
+    <button type="button" onclick="saveBtn()">저장</button>
+    <div id="d01"></div>
+    <script>
+        function saveBtn(){
+            // var kor = document.getElementById("kor").value;
+            // console.log(kor);
+            var kor=$("#kor").val();
+        }
+    </script>
+
+</body>
+</html>

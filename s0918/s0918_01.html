@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div{width: 300px;height: 200px; border:1px solid black; font-size:30px; text-align: center;}
+</style>
+<body>
+    <div id="screen">0</div>
+    <button>실행</button>
+    <script>
+        document.getElementById("screen").innerText
+
+        
+        function getClock(){
+                document.getElementById("screen").innerText
+                var date=new Date();
+                document.write(date+"<br>");
+                date.getFullYear()
+                date.getMonth()
+                date.getDate()
+                date.getDay()
+                date.getHours()
+                date.getMinutes()
+                date.getSeconds()
+                var today=`${date.getFullYear}년${date.getMonth}월${date.getDate}일${date.getDay}요일${date.getHours}:${date.getMinutes}:${date.getSeconds};}
+
+
+        setInterval(,1000);
+    </script>
+
+</body>
+</html>

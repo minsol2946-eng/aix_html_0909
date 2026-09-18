@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" name="id" id="id">
+    <label>@</label>
+    <input type="text" name="email1" id="email1">
+    <select name="email2" id="email2">
+        <option value="">직접입력</option>
+        <option value="naver.com">naver</option>
+        <option value="daum.net">daum</option>
+        <option value="gamil.com">gmail</option>
+    </select>
+    <script>
+        //이벤트리스너:click,mouseover,mouseout,focus,keydown,scroll,change,blur.....
+        var select=document.getElementById("email2")
+        select.addEventListener('change',function(){
+            document.getElementById('email1').value=
+            document.getElementById('email2').value;
+            location.href="http://"+document.getElementById('email2').value;
+        });
+    </script>
+</body>
+</html>

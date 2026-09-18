@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <title>Document</title>
+    <style>
+        h2{text-align: center;}
+        table,th,td{border:1px solid black; border-collapse: collapse; }
+        table{width:1000px; text-align: center; box-sizing: border-box;
+        margin:50px auto;}
+        th{background: #efefef; height:60px;}
+        td{height:40px;}
+    </style>
+    <script>
+        var students = [
+            {"no":1,"name":"홍길동","kor":100,"eng":100,"math":100,"total":300,"avg":100.0,"rank":0},
+            {"no":2,"name":"유관순","kor":100,"eng":100,"math":100,"total":300,"avg":100.0,"rank":0},
+        ];
+    </script>
+
+</head>
+<body>
+    <h2>학생성적프로그램</h2>
+    <input type="text" name="no" id="no" placeholder="번호입력"><br>
+    <input type="text" name="name" id="name" placeholder="이름입력"><br>
+    <input type="text" name="kor" id="kor" placeholder="국어점수입력"><br>
+    <input type="text" name="eng" id="eng" placeholder="영어점수입력"><br>
+    <input type="text" name="math" id="math" placeholder="수학점수입력"><br>
+    <button type="button" onclick="saveBtn()">저장</button>
+    <table>
+        <colgroup>
+            <col width="10%">
+            <col width="15%">
+            <col width="10%">
+            <col width="10%">
+            <col width="10%">
+            <col width="10%">
+            <col width="10%">
+            <col width="10%">
+            <col width="15%">
+        </colgroup>
+        <thead>
+            <tr>
+                <th>번호</th>
+                <th>이름</th>
+                <th>국어</th>
+                <th>영어</th>
+                <th>수학</th>
+                <th>합계</th>
+                <th>평균</th>
+                <th>등수</th>
+                <th>버튼</th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+
+        </tbody>
+    </table>
+    <script>
+    var stu = "";
+
+    for(var i=0; i<students.length; i++){
+        stu += `
+            <tr id="${students[i].no}">
+                <td>${students[i].no}</td>
+                <td>${students[i].name}</td>
+                <td>${students[i].kor}</td>
+                <td>${students[i].eng}</td>
+                <td>${students[i].math}</td>
+                <td>${students[i].total}</td>
+                <td>${students[i].avg}</td>
+                <td>${students[i].rank}</td>
+                <td>
+                    <button class="update">수정</button>
+                    <button class="delete">삭제</button>
+                </td>
+            </tr>
+        `;
+    }
+
+    $("#tbody").html(stu);
+    </script>
+
+
+</body>
+</html>

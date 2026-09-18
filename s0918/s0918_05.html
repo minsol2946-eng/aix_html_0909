@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div{width: 200px;height: 200px; border: 1px solid black;}
+</style>
+<body>
+    <div id="d01" ></div>
+
+    <script>
+        var screen1=screen.width;
+        var screen2=screen.height;
+        document.getElementById("d01").innerText=`
+        가로넓이:${screen1},세로넓이:${screen2}`;
+
+    </script>
+
+</body>
+</html>
