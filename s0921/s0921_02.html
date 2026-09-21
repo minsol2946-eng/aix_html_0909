@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <title>Document</title>
+    <style>
+        #txt{width:200px; height: 40px; border: 1px solid black; text-align: center; line-height: 40px;}
+    </style>
+    <script>
+        $(function(){
+            $('#saveBtn').click(function(){
+                var kor=$("#kor").val();
+                $("#txt").text(kor);
+            
+            // $("#conBtn").click(function(){
+            //     var h= $(".h2").attr("clss");
+            //     $("#txt").text(h);
+
+            $("#conBtn").click(function(){
+                $("#img1").attr("src", "pic/ff2.jpg"); });
+            })
+            })
+
+        });
+    </script>
+</head>
+<body>
+    <h1 id="h1">안녕하세요</h1>
+    <h2 class="h2">12345</h2>
+    <input type="text" name="kor" id="kor"><br>
+    <button type="button" id="saveBtn">저장</button>
+    <button type="button" id=conBtn">확인</button>
+    <div id="txt" >0</div>
+    <img id="img1" src="pic/ff.jpg">
+</body>
+</html>

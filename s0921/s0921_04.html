@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <title>학생성적프로그램</title>
+    <style>
+        *{margin:0; padding:0;}
+        div{width:1200px; margin:0 auto; text-align: center;}
+        h2{margin:20px 0 10px 0;}
+        table,th,td{border:1px solid black; border-collapse: collapse;}
+        table{width:1200px;}
+        th,td{height:40px;}
+        th{background: #efefef;}
+        button{width:80px; height:35px;}
+    </style>
+    <script>
+        $(function(){
+            //전역변수
+            var id = "";
+            var no=0,name="",kor=0,eng=0,math=0,total=0,avg=0,rank=0;
+
+            $(document).on("click",".deleteBtn",function(){
+                console.log("tr id : ",$(this).parent().parent().attr("id"));
+                id = $(this).parent().parent().attr("id");
+
+                if(confirm("성적을 삭제하시겠습니까?")){
+                    $("#"+id).remove();
+                }
+            });//deleteBtn
+
+            //동적이벤트함수
+            $(document).on("click","#saveBtn",function(){
+                // alert("확인 : "+$(this).text())
+                if ($(this).text()=="저장"){ //저장
+                    no = Number($("#no").val());
+                    name = $("#name").val();
+                    kor = Number($("#kor").val());
+                    eng = Number($("#eng").val());
+                    math = Number($("#math").val());
+                    total = kor+eng+math;
+                    avg = total/3;
+                    rank = 0;
+                    //alert("데이터 : "+no+name+kor+eng+math+total+avg+rank);
+                    var txthtml = `
+                    <tr id="${no}">
+                        <td>${no}</td><td>${name}</td><td>${kor}</td>
+                        <td>${eng}</td><td>${math}</td><td>${total}</td>
+                        <td>${avg}</td><td>${rank}</td>
+                        <td>
+                            <button type="button" class="updateBtn">수정</button>
+                            <button type="button" class="deleteBtn">삭제</button>
+                        </td>
+                    </tr>
+                    `;
+                    $("#tbody").append(txthtml);
+                    //데이터초기화
+                    $("#no").val("");
+                    $("#name").val("");
+                    $("#kor").val("");
+                    $("#eng").val("");
+                    $("#math").val("");
+                    alert("학생성적이 저장되었습니다.");
+                }else{                       //수정완료
+                    no = Number($("#no").val());
+                    name = $("#name").val();
+                    kor = Number($("#kor").val());
+                    eng = Number($("#eng").val());
+                    math = Number($("#math").val());
+                    total = kor+eng+math;
+                    avg = total/3;
+                    rank = 0;
+                    var txthtml = `
+                        <td>${no}</td><td>${name}</td><td>${kor}</td>
+                        <td>${eng}</td><td>${math}</td><td>${total}</td>
+                        <td>${avg}</td><td>${rank}</td>
+                        <td>
+                            <button type="button" class="updateBtn">수정</button>
+                            <button type="button" class="deleteBtn">삭제</button>
+                        </td>
+                    `;
+                    $("#"+id).html(txthtml);
+                    //타이틀 변경
+                    $("#txtTitle").text("학생성적입력");
+                    $("#saveBtn").text("저장");
+                    $("#conBtn").text("가져오기");
+                    //데이터초기화
+                    $("#no").val("");
+                    $("#name").val("");
+                    $("#kor").val("");
+                    $("#eng").val("");
+                    $("#math").val("");
+                    alert("학생성적이 수정되었습니다.");
+                }//if
+            });//saveBtn
+
+            //수정버튼클릭
+            $(document).on("click",".updateBtn",function(){
+                $("#txtTitle").text("학생성적수정");
+                $("#saveBtn").text("수정완료");
+                $("#conBtn").text("취소");
+                var tr = $(this).parent().parent();
+
+                id = tr.attr("id"); //전역변수에 저장
+
+                no = tr.find("td:eq(0)").text();
+                name = tr.find("td:eq(1)").text();
+                kor = tr.find("td:eq(2)").text();
+                eng = tr.find("td:eq(3)").text();
+                math = tr.find("td:eq(4)").text();
+                total = tr.find("td:eq(5)").text();
+                avg = tr.find("td:eq(6)").text();
+                rank = tr.find("td:eq(7)").text();
+                
+                $("#no").val(no);
+                $("#name").val(name);
+                $("#kor").val(kor);
+                $("#eng").val(eng);
+                $("#math").val(math);
+            });//updateBtn
+
+            //가져오기,취소버튼
+            $(document).on("click","#conBtn",function(){
+                if($(this).text() == "가져오기"){
+                    $.ajax({
+                        url:"pic/stu.json",
+                        type:"get", //get,post
+                        data:"",    //보내는데이터
+                        dataType:"json", //받는타입
+                        success:function(data){ //받는곳:data
+                            alert("데이터 가져오기 완료");
+                            console.log(data);
+                            var txthtml = ``;
+                            for(var i=0;i<100;i++){ //100번반복
+                                txthtml += `
+                                <tr id="${data[i].no}">
+                                    <td>${data[i].no}</td><td>${data[i].name}</td><td>${data[i].kor}</td>
+                                    <td>${data[i].eng}</td><td>${data[i].math}</td><td>${data[i].total}</td>
+                                    <td>${data[i].avg}</td><td>${data[i].rank}</td>
+                                    <td>
+                                        <button type="button" class="updateBtn">수정</button>
+                                        <button type="button" class="deleteBtn">삭제</button>
+                                    </td>
+                                </tr>
+                                `;
+                                $("#tbody").html(txthtml); //100개의 리스트완성
+                            }//for
+                        },
+                        fail:function(){
+                            alert("실패");
+                        }
+                    });//ajax
+
+                }else{
+                    alert("학생성적을 취소합니다.");
+                    //글자변경
+                    $("#txtTitle").text("학생성적입력");
+                    $("#saveBtn").text("저장");
+                    $("#conBtn").text("가져오기");
+                    //데이터초기화
+                    $("#no").val("");
+                    $("#name").val("");
+                    $("#kor").val("");
+                    $("#eng").val("");
+                    $("#math").val("");
+                }
+            });//conBtn
+
+        });//제이쿼리
+    </script>
+</head>
+<body>
+    <div>
+        <h2 id="txtTitle">학생성적입력</h2>
+        <input type="text" name="no" id="no" placeholder="번호입력"><br>
+        <input type="text" name="name" id="name" placeholder="이름입력"><br>
+        <input type="text" name="kor" id="kor" placeholder="국어입력"><br>
+        <input type="text" name="eng" id="eng" placeholder="영어입력"><br>
+        <input type="text" name="math" id="math" placeholder="수학입력"><br>
+        <br>
+        <button type="button" id="saveBtn">저장</button>
+        <button type="button" id="conBtn">가져오기</button>
+
+        <h2>학생성적리스트</h2>
+        <table>
+            <colgroup>
+                <col width="10%">
+                <col width="15%">
+                <col width="10%">
+                <col width="10%">
+                <col width="10%">
+                <col width="10%">
+                <col width="10%">
+                <col width="10%">
+                <col width="15%">
+            </colgroup>
+            <tr>
+                <th>번호</th>
+                <th>이름</th>
+                <th>국어</th>
+                <th>영어</th>
+                <th>수학</th>
+                <th>합계</th>
+                <th>평균</th>
+                <th>등수</th>
+                <th>비고</th>
+            </tr>
+            <tbody id="tbody">
+            <tr id="1">
+                <td>1</td>
+                <td>홍길동</td>
+                <td>100</td>
+                <td>100</td>
+                <td>100</td>
+                <td>300</td>
+                <td>100.0</td>
+                <td>0</td>
+                <td>
+                    <button type="button" class="updateBtn">수정</button>
+                    <button type="button" class="deleteBtn">삭제</button>
+                </td>
+            </tr>
+            <tr id="2">
+                <td>2</td>
+                <td>유관순</td>
+                <td>100</td>
+                <td>100</td>
+                <td>100</td>
+                <td>300</td>
+                <td>100.0</td>
+                <td>0</td>
+                <td>
+                    <button type="button" class="updateBtn">수정</button>
+                    <button type="button" class="deleteBtn">삭제</button>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

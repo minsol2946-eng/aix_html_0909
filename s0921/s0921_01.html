@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <title>Document</title>
+    <style>
+        #txt{width:200px; height: 40px; border: 1px solid black; text-align: center; line-height: 40px;}
+        
+    </style>
+    <script>
+        $(function(){ $("#saveBtn").click(function(){ 
+            var total = Number($("#kor").val()) 
+            + Number($("#eng").val()) 
+            + Number($("#math").val()); 
+            $("#txt").text(total); }); 
+            
+            
+            
+            // $("#conBtn").click(function(){
+            //     $("txt").text($(".h2").text());
+
+            //동적 함수로 변경
+            $(document).on("click", "#conBtn", function(){ 
+                $("#txt").text($(".h2").text());
+                });
+        
+            });
+
+        
+        //자바스크립트 함수
+        function btn(){}
+    </script>
+</head>
+<body>
+    <h1 id="h1">안녕하세요</h1>
+    <h2 class="h2">12345</h2>
+    <input type="text" name="kor" id="kor"><br>
+    <input type="text" name="eng" id="eng"><br>
+    <input type="text" name="math" id="math"><br>
+    <button type="button" id="saveBtn">저장</button>
+    <button type="button" id="conBtn">가져오기</button>
+    <br>
+    <div id="txt">0</div>
+
+    <script>
+        console.log("데이터: "+1);
+        var a =document.getElementById("h1").innerText;
+        console.log(a);
+
+        var b=$("h1").text();
+        console.log("jquery b: "+b)
+    </script>
+</body>
+</html>
